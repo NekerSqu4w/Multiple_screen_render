@@ -1,0 +1,24 @@
+local screen_ent = {}
+local font = render.createFont("Courier New", 45, 100, true, false, false, false, false, true)
+
+function update(show_id)
+    local show_id = show_id or false
+    local screen_list = chip():getLinkedComponents()
+    for _, screen in pairs(screen_list) do
+        screen_ent[screen] = _
+    end
+    local screen_index = screen_ent[render.getScreenEntity()]
+    hook.run("ms_render"..screen_index,screen_index)
+    
+    if show_id then
+        render.setColor(Color(255,70,70,150))
+        render.drawRect(20,0,60,60)
+        render.setFont(font)
+        render.setColor(Color(255,255,255))
+        render.drawSimpleText(20 + 30,0 + 30,tostring(screen_index),1,1)
+    end
+    
+    return screen_index
+end
+
+return {update=update}
