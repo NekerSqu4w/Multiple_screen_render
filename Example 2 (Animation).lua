@@ -1,9 +1,9 @@
 --@name Multiple screen
 --@author AstalNeker
---@include multiple screen lib.txt
+--@include multiple screen lib.lua
 
 if CLIENT then
-    local msl = require("multiple screen lib.txt")
+    local msl = require("multiple screen lib.lua")
 
     local pos = {}
     for i=1, 8 do
