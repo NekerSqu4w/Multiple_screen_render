@@ -20,10 +20,11 @@ if CLIENT then
     end)
     
     hook.add("render","",function()
-        msl.update(false) //msl.update(show_id)
+        //only work with 'render' hook
+        msl.update(true) //msl.update(show_id)
 
         //draw on all screen
         render.setColor(Color(255,255,0))
         render.drawRect(512 - 50 - 90,512 - 50 - 90,90,90)
-    end) 
+    end)
 end
