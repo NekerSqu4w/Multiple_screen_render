@@ -1,9 +1,9 @@
 --@name Multiple screen user lib
 --@author AstalNeker
---@include multiple screen lib.txt
+--@include multiple screen lib.lua
 
 if CLIENT then
-    local msl = require("multiple screen lib.txt")
+    local msl = require("multiple screen lib.lua")
     
     //draw on different screen
     hook.add("ms_render1","",function(screen_id)
