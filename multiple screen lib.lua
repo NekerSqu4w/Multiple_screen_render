@@ -3,15 +3,25 @@ my_lib.screen_ent = {}
 my_lib.font = render.createFont("Courier New", 45, 100, true, false, false, false, false, true)
 
 function update(show_id)
+    //some value we need to work
     my_lib.show_id = show_id or false
     my_lib.screen_list = chip():getLinkedComponents()
     for _, screen in pairs(my_lib.screen_list) do
         my_lib.screen_ent[screen] = _
     end
+
+    my_lib.res = {}
+    my_lib.res.x,my_lib.res.y = render.getResolution()
     my_lib.screen_index = my_lib.screen_ent[render.getScreenEntity()]
-    hook.run("ms_render"..my_lib.screen_index,my_lib.screen_index)
     
+    //run the hook
+    hook.run("ms_render"..my_lib.screen_index,my_lib.screen_index,my_lib.res.x,my_lib.res.y)
+    
+    //show screen id
     if my_lib.show_id then
+        render.setColor(Color(255,70,70))
+        render.drawRectOutline(0,0,my_lib.res.x,my_lib.res.y)
+
         render.setColor(Color(255,70,70,150))
         render.drawRect(20,0,60,60)
         render.setFont(my_lib.font)
